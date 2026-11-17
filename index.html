@@ -1,1 +1,43 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Minha Loja</title><h1>Minha Loja</h1></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111111"><meta name="description" content="Gestão de pedidos, clientes e produtos da sua loja.">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>Minha Loja — Gestão de pedidos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+<header class="topbar"><div class="brand"><div class="brandmark">ML</div><div><strong>MINHA LOJA</strong><small>GESTÃO DE PEDIDOS</small></div></div><div class="top-actions"><span id="user-label" class="muted"></span><button id="logout-btn" class="btn btn-outline hidden">Sair</button></div></header>
+<main>
+  <section id="config-screen" class="auth-card hidden">
+    <div class="eyebrow">CONFIGURAÇÃO INICIAL</div><h1>Conecte sua loja à nuvem</h1><p>Para sincronizar celular e computador, crie um projeto gratuito no Supabase e informe os dados dele aqui. O guia está no arquivo <b>LEIA-ME.txt</b>.</p>
+    <label>Project URL<input id="supabase-url" placeholder="https://seuprojeto.supabase.co"></label>
+    <label>Chave pública (anon / publishable)<input id="supabase-key" placeholder="sb_publishable_... ou anon key"></label>
+    <button id="save-config" class="btn btn-dark full">Conectar</button>
+  </section>
+  <section id="auth-screen" class="auth-card hidden">
+    <div class="eyebrow">ACESSO SEGURO</div><h1>Entre na sua loja</h1><p>Use seu e-mail e senha. Cada funcionário deve ter seu próprio acesso.</p>
+    <form id="login-form"><label>E-mail<input id="email" type="email" autocomplete="username" required placeholder="voce@exemplo.com"></label><label>Senha<input id="password" type="password" autocomplete="current-password" required placeholder="Sua senha"></label><button class="btn btn-dark full">Entrar</button></form>
+    <button id="show-signup" class="text-btn">Criar a primeira conta da loja</button>
+    <form id="signup-form" class="hidden"><label>Seu nome<input id="signup-name" required placeholder="Seu nome"></label><label>E-mail<input id="signup-email" type="email" required></label><label>Senha<input id="signup-password" type="password" minlength="8" required placeholder="Mínimo de 8 caracteres"></label><button class="btn btn-dark full">Criar conta</button></form>
+    <p class="tiny">A criação de contas pode exigir confirmação de e-mail, conforme a configuração do projeto Supabase.</p>
+  </section>
+  <section id="setup-store-screen" class="auth-card hidden"><div class="eyebrow">PRIMEIRO ACESSO</div><h1>Configure sua loja</h1><p>Defina o nome que aparecerá nos comprovantes. Depois, gere um código para seus funcionários entrarem.</p><label>Nome da loja<input id="store-name" placeholder="Ex.: Loja da Ana"></label><button id="create-store" class="btn btn-dark full">Criar minha loja</button></section>
+  <section id="join-store-screen" class="auth-card hidden"><div class="eyebrow">ENTRAR NA EQUIPE</div><h1>Vincular funcionário</h1><p>Peça ao responsável o código de acesso da loja.</p><label>Código da loja<input id="join-code" placeholder="Código fornecido pelo responsável"></label><button id="join-store" class="btn btn-dark full">Entrar na loja</button></section>
+  <section id="app-screen" class="hidden">
+    <div class="welcome"><div><div class="eyebrow">PAINEL DE CONTROLE</div><h1 id="store-title">Minha Loja</h1><p class="muted">Visão geral dos pedidos e das vendas.</p></div><button id="new-order-top" class="btn btn-dark">＋ Novo pedido</button></div>
+    <div class="stats"><article class="stat"><span>VENDAS REGISTRADAS</span><strong id="stat-sales">R$ 0,00</strong><small id="stat-count">0 pedidos</small></article><article class="stat"><span>VALOR RECEBIDO</span><strong id="stat-paid">R$ 0,00</strong><small>Pagamentos confirmados</small></article><article class="stat"><span>A RECEBER</span><strong id="stat-due">R$ 0,00</strong><small>Pedidos não pagos</small></article><article class="stat"><span>PEDIDOS EM ABERTO</span><strong id="stat-open">0</strong><small>Preparação ou entrega</small></article></div>
+    <nav class="tabs"><button class="tab active" data-tab="orders">Pedidos</button><button class="tab" data-tab="products">Produtos</button><button class="tab" data-tab="customers">Clientes</button><button class="tab" data-tab="team">Equipe</button></nav>
+    <section id="tab-orders" class="panel"><div class="panel-head"><div><h2>Pedidos</h2><p class="muted">Pedidos do WhatsApp e presenciais no mesmo lugar.</p></div><button id="new-order" class="btn btn-dark">＋ Novo pedido</button></div><div class="toolbar"><input id="order-search" placeholder="Buscar por pedido ou cliente..."><select id="order-filter"><option value="all">Todos os status</option><option>Pago</option><option>Em preparação</option><option>Enviado</option><option>Entregue</option><option>Cancelado</option></select></div><div id="orders-list" class="list"><div class="empty">Seus pedidos aparecerão aqui.</div></div></section>
+    <section id="tab-products" class="panel hidden"><div class="panel-head"><div><h2>Produtos</h2><p class="muted">Cadastre preços e acompanhe o estoque.</p></div><button id="add-product" class="btn btn-dark">＋ Produto</button></div><div id="products-list" class="list"><div class="empty">Nenhum produto cadastrado.</div></div></section>
+    <section id="tab-customers" class="panel hidden"><div class="panel-head"><div><h2>Clientes</h2><p class="muted">Contatos e histórico de compras.</p></div><button id="add-customer" class="btn btn-dark">＋ Cliente</button></div><div id="customers-list" class="list"><div class="empty">Nenhum cliente cadastrado.</div></div></section>
+    <section id="tab-team" class="panel hidden"><div class="panel-head"><div><h2>Equipe</h2><p class="muted">Compartilhe o código com seus funcionários.</p></div></div><div class="team-card"><div><span class="eyebrow">CÓDIGO DE CONVITE</span><strong id="invite-code">—</strong><p class="muted">O funcionário cria a própria conta e informa este código na primeira entrada.</p></div><button id="copy-code" class="btn btn-outline">Copiar código</button></div><p class="tiny">Todos os membros da loja conseguem ver e gerenciar os pedidos, produtos e clientes. Não compartilhe o código publicamente.</p></section>
+  </section>
+</main>
+<div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h2 id="modal-title">Novo pedido</h2><button id="close-modal" class="icon-btn" aria-label="Fechar">×</button></div><div id="modal-body"></div></div></div>
+<div id="toast" class="toast"></div>
+<footer>MINHA LOJA <span>•</span> Seus pedidos organizados em um só lugar</footer>
+<script src="app.js"></script>
+</body></html>
