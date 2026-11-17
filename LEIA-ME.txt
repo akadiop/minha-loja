@@ -1,0 +1,42 @@
+MINHA LOJA — GESTÃO DE PEDIDOS
+Versão inicial / MVP
+
+O QUE É
+Aplicativo web instalável (PWA), com visual branco e preto. Funciona no computador e no celular. Os dados ficam na nuvem Supabase e são compartilhados entre os membros da mesma loja.
+
+IMPORTANTE
+- Esta versão é um organizador de pedidos e gerador de comprovante comercial. NÃO emite NF-e, NFC-e ou NFS-e e não substitui documento fiscal oficial.
+- Para sincronizar os dispositivos, é necessário internet e hospedar os arquivos do aplicativo em um endereço HTTPS. O app não é um site de vendas público: é uma tela privada com login.
+- Nunca coloque a chave service_role do Supabase no aplicativo. Use somente a chave pública anon/publishable.
+
+CONFIGURAÇÃO (gratuita para começar)
+1. Crie uma conta em https://supabase.com e crie um projeto.
+2. No painel do projeto, abra SQL Editor > New query. Cole todo o conteúdo de supabase.sql e execute.
+3. O endereço e a chave pública deste projeto já estão configurados no aplicativo. Não use nem compartilhe a chave secreta service_role.
+4. Hospede a pasta inteira em um serviço de hospedagem estática HTTPS (por exemplo, Netlify ou Cloudflare Pages). Pode conectar um repositório GitHub ou enviar os arquivos pelo painel do serviço.
+5. Abra o endereço HTTPS publicado. O aplicativo já se conecta ao Supabase automaticamente.
+6. Crie a primeira conta com seu nome, e-mail e senha. Se a confirmação de e-mail estiver ativada, confirme pelo e-mail e depois entre.
+7. Crie sua loja e cadastre produtos e clientes.
+8. Para cada funcionário: peça para criar uma conta própria no mesmo endereço do aplicativo. Na tela inicial, escolha “Sou funcionário — entrar com código” e informe o código que aparece em Equipe no painel do responsável.
+9. No celular, abra o endereço HTTPS no navegador e escolha “Adicionar à tela inicial” / “Instalar aplicativo”. No computador, use o ícone de instalação na barra de endereço, se disponível.
+
+COMO USAR
+- Cadastre pelo menos um produto e um cliente.
+- Clique em Novo pedido, selecione cliente, origem, produtos, quantidades, pagamento e prazo.
+- Abra o pedido para atualizar status, compartilhar um resumo ou imprimir/salvar o comprovante em PDF.
+- Os pedidos, clientes e produtos são compartilhados com a equipe da loja.
+
+LIMITAÇÕES DESTA PRIMEIRA VERSÃO
+- Não tem integração automática com WhatsApp nem confirmação automática de Pix. O status do pagamento é atualizado manualmente.
+- Não tem controle de despesas, fluxo de caixa completo, emissão fiscal ou cálculo de lucro líquido.
+- O estoque é reduzido quando o pedido é criado; ajuste manualmente se cancelar ou alterar itens.
+- O cadastro de funcionários é feito por cada funcionário criando sua própria conta e usando o código de convite. Mantenha o código privado.
+- Para uso comercial contínuo, faça backup periódico no Supabase e revise as configurações de autenticação e segurança.
+
+ARQUIVOS
+index.html       Tela do aplicativo
+styles.css       Visual branco e preto
+app.js           Funções do aplicativo
+manifest.webmanifest / icon.svg  Instalação como app
+sw.js            Cache básico da interface
+supabase.sql     Banco de dados, contas e regras de acesso
