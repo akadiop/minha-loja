@@ -1,0 +1,3 @@
+-- O schema ja foi instalado no projeto Supabase existente akadiop's Project.
+-- Preservamos os dados existentes; este arquivo e uma referencia de instalacao.
+-- Nao execute novamente sem revisar as migrations existentes.
