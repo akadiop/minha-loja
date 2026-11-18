@@ -90,3 +90,38 @@
 .ledger-delete:hover{background:#f3f3f3;color:#b22}
 .ledger-empty{text-align:center;color:#999;font-size:11px;line-height:1.5;padding:18px 8px;border:1px dashed #e5e5e5;border-radius:9px}
 @media(max-width:760px){.ledger-widget{right:8px;bottom:8px;width:min(310px,calc(100vw - 16px));max-height:55vh}.ledger-widget.collapsed{width:220px}.ledger-list{max-height:155px}.living-office{display:none}}
+
+
+/* Seletor de tema claro/escuro */
+.theme-toggle{white-space:nowrap}
+body.dark-theme{background:#111;color:#f1f1f1;color-scheme:dark}
+body.dark-theme .topbar{background:#181818;border-color:#333}
+body.dark-theme .brandmark{background:#f1f1f1;color:#111}
+body.dark-theme .brand small,body.dark-theme .muted,body.dark-theme .eyebrow{color:#aaa}
+body.dark-theme .stat,body.dark-theme .panel,body.dark-theme .auth-card,body.dark-theme .modal-card,body.dark-theme .team-card{background:#1b1b1b;border-color:#363636;color:#f1f1f1}
+body.dark-theme .tabs{border-color:#383838}
+body.dark-theme .tab{color:#aaa}
+body.dark-theme .tab.active{color:#fff;border-color:#fff}
+body.dark-theme input,body.dark-theme select,body.dark-theme textarea{background:#252525;border-color:#444;color:#f1f1f1;color-scheme:dark}
+body.dark-theme input::placeholder,body.dark-theme textarea::placeholder{color:#888}
+body.dark-theme label{color:#ccc}
+body.dark-theme .btn-outline{background:#252525;color:#eee;border-color:#555}
+body.dark-theme .btn-dark{background:#f1f1f1;color:#111;border-color:#f1f1f1}
+body.dark-theme .btn-dark:hover{background:#ddd}
+body.dark-theme .list-row,body.dark-theme .items-editor{background:#202020;border-color:#3a3a3a}
+body.dark-theme .list-row small,body.dark-theme .stat small,body.dark-theme .stat span{color:#aaa}
+body.dark-theme .pill,body.dark-theme .icon-btn,body.dark-theme .remove-item{background:#333;color:#eee}
+body.dark-theme .empty{border-color:#444;color:#aaa}
+body.dark-theme .modal{background:#000b}
+body.dark-theme .ledger-widget{background:#1b1b1b;border-color:#444;color:#f1f1f1}
+body.dark-theme .ledger-head{background:#080808}
+body.dark-theme .ledger-entry{background:#222;border-color:#3c3c3c}
+body.dark-theme .ledger-entry-main small,body.dark-theme .ledger-history-head small{color:#aaa}
+body.dark-theme .ledger-delete{color:#bbb}
+body.dark-theme .ledger-empty{border-color:#444;color:#aaa}
+body.dark-theme footer{color:#777}
+body.dark-theme .text-btn{color:#ddd}
+body.dark-theme .invoice-preview{color:#111}
+body.dark-theme .invoice-paper{background:#fff;color:#222}
+body.dark-theme .invoice-paper input,body.dark-theme .invoice-paper select{color:#111}
+@media(max-width:600px){.theme-toggle{padding:8px 9px;font-size:11px}}
