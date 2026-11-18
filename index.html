@@ -5,7 +5,7 @@
   <meta name="theme-color" content="#111111"><meta name="description" content="Gestão de pedidos, clientes e produtos da sua loja.">
   <link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml">
   <title>Minha Loja — Gestão de pedidos</title>
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=23">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -54,11 +54,22 @@
       </div>
       <div class="office-footer"><span>Construindo a Aproximaí</span><span class="typing-dots">•••</span></div>
     </aside>
+    <aside id="ledger-widget" class="ledger-widget" aria-label="Caixa e extrato da loja">
+      <div class="ledger-head"><div><span>CAIXA DA LOJA</span><strong id="ledger-balance">R$ 0,00</strong></div><button type="button" id="ledger-toggle" aria-label="Recolher extrato">−</button></div>
+      <div id="ledger-body" class="ledger-body">
+        <form id="ledger-form" class="ledger-form">
+          <div class="ledger-fields"><select id="ledger-type" aria-label="Tipo de lançamento"><option value="expense">Despesa</option><option value="income">Entrada</option></select><input id="ledger-description" required maxlength="120" placeholder="Ex.: Saldo inicial, placa, frete..."></div>
+          <div class="ledger-amount-row"><input id="ledger-amount" type="number" min="0.01" step="0.01" required placeholder="Valor em R$"><button class="btn btn-dark" type="submit">Lançar</button></div>
+        </form>
+        <div class="ledger-history-head"><strong>Extrato</strong><small id="ledger-count">0 lançamentos</small></div>
+        <div id="ledger-list" class="ledger-list"><div class="ledger-empty">Nenhum lançamento ainda.</div></div>
+      </div>
+    </aside>
   </section>
 </main>
 <div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h2 id="modal-title">Novo pedido</h2><button id="close-modal" class="icon-btn" aria-label="Fechar">×</button></div><div id="modal-body"></div></div></div>
 <div id="toast" class="toast"></div>
 <footer>MINHA LOJA <span>•</span> Seus pedidos organizados em um só lugar</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<script src="app.js?v=22"></script>
+<script src="app.js?v=23"></script>
 </body></html>
