@@ -56,3 +56,5 @@
 .invoice-logo-image{width:58px;height:48px;object-fit:contain;display:block;flex:0 0 auto}
 .invoice-wordmark{font-size:16px;font-weight:900;letter-spacing:-.7px;color:#111;white-space:nowrap;padding:0 4px}
 .invoice-brand{gap:15px}
+
+.invoice-brand{display:flex;align-items:center;gap:16px;min-height:92px;padding:12px 0 16px}.invoice-logo-image{display:block;width:190px;height:112px;max-width:48%;object-fit:contain;object-position:left center;flex:0 1 auto}.invoice-brand-spacer{flex:1}.invoice-brand-copy,.invoice-wordmark{display:none!important}@media(max-width:600px){.invoice-logo-image{width:155px;height:92px}}
