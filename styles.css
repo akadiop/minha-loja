@@ -50,3 +50,9 @@
 .invoice-footer{display:flex;align-items:center;gap:12px;border-top:1px solid #ddd;margin-top:24px;padding-top:17px}.invoice-footer-mark{width:32px;height:32px;flex:0 0 32px;border-radius:9px;background:#111;color:white;display:grid;place-items:center;font-size:17px;font-weight:900}.invoice-footer strong{font-size:11px}.invoice-footer p{font-size:9px;color:#777;margin:4px 0}
 @media(max-width:600px){.invoice-paper{padding:19px}.invoice-title h1{font-size:20px}.invoice-item{grid-template-columns:46px minmax(0,1fr) 38px 75px;gap:7px}.invoice-item-photo{width:46px;height:46px}.invoice-item-info strong{font-size:10px}.invoice-item-price{font-size:10px}.invoice-meta{padding:11px 9px}.invoice-meta strong{font-size:10px}}
 @media print{@page{size:A4;margin:10mm}.invoice-paper{box-shadow:none;border:0;max-width:none;padding:0}}
+
+
+/* Ajustes finais de identidade no documento */
+.invoice-logo-image{width:58px;height:48px;object-fit:contain;display:block;flex:0 0 auto}
+.invoice-wordmark{font-size:16px;font-weight:900;letter-spacing:-.7px;color:#111;white-space:nowrap;padding:0 4px}
+.invoice-brand{gap:15px}
